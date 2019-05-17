@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OpenCVTest</string>
+     <string name="str_proc">处理图像</string>
+</resources>
