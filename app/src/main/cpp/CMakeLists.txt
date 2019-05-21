@@ -9,7 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE  on)
 #include_directories(${CMAKE_SOURCE_DIR}/include)
 set(opencvPath "D:/opencv/OpenCV-2.4.11-android-sdk/OpenCV-android-sdk/sdk/native")
 set(ocvlibs "${opencvPath}/libs")
-include_directories(${opencvPath}/jni/include)
+include_directories(${opencvPath}/jni/include ./)
 add_library(libopencv_java3 SHARED IMPORTED)
 set_target_properties(libopencv_java3 PROPERTIES IMPORTED_LOCATION "${ocvlibs}/${ANDROID_ABI}/libopencv_java.so")
 
@@ -23,7 +23,7 @@ add_library( # Sets the name of the library.
 
         # Sets the library as a shared library.
         SHARED
-
+        imageProc.c
         # Provides a relative path to your source file(s).
         native-lib.cpp)
 
@@ -46,7 +46,18 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
         native-lib
-        android log libopencv_java3
+        android log libopencv_java3 jnigraphics
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
+
+###add_library(
+###        ndk-camera
+
+###        SHARED
+###       ImageProc.c
+###)
+###target_link_libraries(
+###        ndk-camera
+###      android log jnigraphics
+###)###
